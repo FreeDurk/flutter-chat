@@ -38,7 +38,6 @@ class _InputFieldState extends State<InputField> {
         ),
         TextField(
           controller: widget.controller,
-          onChanged: widget.onChanged,
           obscureText: widget.isPassword,
           style: const TextStyle(
             fontSize: 14,

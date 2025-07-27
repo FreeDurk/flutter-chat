@@ -6,16 +6,18 @@ import 'package:mchat/features/auth/data/dto/login_request.dart';
 class AuthService {
   final Dio dio;
 
-  AuthService(this.dio); 
+  AuthService(this.dio);
 
   Future login(LoginRequest request) async {
+    await Future.delayed(Duration(seconds: 5));
     try {
-      // dio.post(path)
-    } catch (dio) {
-      // 
+      return request;
+    } catch (e) {
+      return e;
     }
-    return true;
   }
 }
 
-final authServiceProvider = Provider((ref) => AuthService(ref.read(dioProvider)));
+final authServiceProvider = Provider(
+  (ref) => AuthService(ref.read(dioProvider)),
+);
