@@ -27,11 +27,9 @@ class LoginBtn extends ConsumerWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text, style: Theme.of(context).textTheme.bodyMedium),
             loginState.when(
-              data: (result) => result == null
-                  ? const SizedBox()
-                  : Text(result.email, style: TextStyle(color: Colors.black)),
+              data: (result) => 
+                  Text(result == null ? text : 'Success', style: Theme.of(context).textTheme.bodyMedium),
               error: (error, stackTrace) =>
                   Text("Error", style: TextStyle(color: Colors.black)),
               loading: () => const Padding(
