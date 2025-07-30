@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mchat/core/providers/theme_provider.dart';
 import 'package:mchat/features/auth/data/dto/login_request.dart';
 import 'package:mchat/features/auth/data/repositories/auth_repository.dart';
+import 'package:mchat/features/dashboard/providers/user_provider.dart';
 
 class LoginBtn extends ConsumerWidget {
   final String text;
@@ -12,7 +13,7 @@ class LoginBtn extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final loginState = ref.watch(loginStateProvider);
+    final loginState = ref.watch(userStateProvider);
     return InkWell(
       
       onTap: () async {
@@ -29,7 +30,7 @@ class LoginBtn extends ConsumerWidget {
           children: [
             loginState.when(
               data: (result) => 
-                  Text(result == null ? text : 'Success', style: Theme.of(context).textTheme.bodyMedium),
+                  Text(text, style: Theme.of(context).textTheme.bodyMedium),
               error: (error, stackTrace) =>
                   Text("Error", style: TextStyle(color: Colors.black)),
               loading: () => const Padding(

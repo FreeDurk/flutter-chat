@@ -9,10 +9,10 @@ class AuthService {
   AuthService(this.dio);
   Future login(LoginRequest request) async {
     try {
-      final response = await dio.post('https://2b2f2e2d073b.ngrok-free.app/v1/login' ,
+      final response = await dio.post('/login' ,
       data: request.toJson());
       if(response.statusCode == 201){
-        return response.data['data']['access_token'];
+        return response.data['data'];
       }
     } catch (e) {
       return e;

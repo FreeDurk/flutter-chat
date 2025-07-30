@@ -44,7 +44,7 @@ class _ContactsCardState extends ConsumerState<ContactsCard> {
                 ],
               ),
               IconButton(
-                onPressed: () => print('edit'),
+                onPressed: () => print('contacts'),
                 icon: Image.asset(
                   'assets/images/groups.png',
                   color: Color(0xFF00A1DE),

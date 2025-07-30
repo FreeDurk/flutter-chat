@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mchat/core/providers/token_notifier.dart';
 import 'package:mchat/features/auth/data/services/auth_service.dart';
 import 'package:mchat/features/auth/data/dto/login_request.dart';
+import 'package:mchat/features/dashboard/providers/user_provider.dart';
+import 'package:mchat/models/user_model.dart';
 
 final loginStateProvider = StateProvider<AsyncValue<dynamic>>((ref) {
   return const AsyncValue.data(null);
@@ -10,15 +12,19 @@ final loginStateProvider = StateProvider<AsyncValue<dynamic>>((ref) {
 
 final loginActionProvider = Provider((ref) {
   return (LoginRequest request) async {
-    ref.read(loginStateProvider.notifier).state = const AsyncValue.loading();
-    
+    ref.read(userStateProvider.notifier).state = const AsyncValue.loading();
+
     try {
       final result = await ref.read(authServiceProvider).login(request);
-      await ref.read(tokenNotifierProvider.notifier).saveToken(result);
-      ref.read(loginStateProvider.notifier).state = AsyncValue.data(result);
+      await ref
+          .read(tokenNotifierProvider.notifier)
+          .saveToken(result['access_token']);
+        ref.read(userStateProvider.notifier).state = AsyncValue.data(
+          UserModel.fromJson(result['user']),
+        );
     } catch (e, st) {
       debugPrint(e.toString());
-      ref.read(loginStateProvider.notifier).state = AsyncValue.error(e, st);
+      ref.read(userStateProvider.notifier).state = AsyncValue.error(e, st);
     }
   };
 });
