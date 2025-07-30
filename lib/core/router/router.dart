@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mchat/features/auth/screens/login_screen.dart';
-import 'package:mchat/features/dashboard/screens/dashboard_screen.dart';
 import 'package:mchat/features/dashboard/screens/main_screen.dart';
 import 'package:mchat/features/contact/screens/contact_screen.dart';
 

@@ -34,9 +34,9 @@ class MyApp extends ConsumerWidget {
         home: Scaffold(
           body: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Loading...', style: TextStyle(color: Colors.black)),
-                CircularProgressIndicator()
+                Image.asset('assets/images/mchat.png'),
               ],
             ),
           ),
