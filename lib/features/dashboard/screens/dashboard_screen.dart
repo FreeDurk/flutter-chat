@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mchat/features/dashboard/data/models/contacts_count_model.dart';
 import 'package:mchat/features/dashboard/data/repositories/dasboard_repository.dart';
-import 'package:mchat/features/dashboard/screens/widgets/appbar.dart';
-import 'package:mchat/features/dashboard/screens/widgets/bottom_nav.dart';
 import 'package:mchat/features/dashboard/screens/widgets/contacts_card.dart';
 import 'package:mchat/features/dashboard/screens/widgets/details_card.dart';
 import 'package:mchat/models/user_model.dart';
@@ -41,11 +39,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final userRef = ref.watch(dashboardProvider);
-    
-    return Scaffold(
-      appBar: AppbarWidget(),
-      bottomNavigationBar: CustomBottomNav(),
-      body: RefreshIndicator(
+
+    return RefreshIndicator(
         onRefresh: _refresh,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -108,7 +103,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

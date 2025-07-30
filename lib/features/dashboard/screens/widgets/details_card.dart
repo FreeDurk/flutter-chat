@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mchat/models/user_model.dart';
 
 class DetailsCard extends ConsumerStatefulWidget {
@@ -45,7 +46,9 @@ class _DetailsCardState extends ConsumerState<DetailsCard> {
                     ],
                   ),
                   IconButton(
-                    onPressed: () => print('edit'),
+                    onPressed: () {
+                      context.push('/profile');
+                    },
                     icon: Image.asset(
                       'assets/images/profile_edit.png',
                       color: Color(0xFFFFFFFF),
