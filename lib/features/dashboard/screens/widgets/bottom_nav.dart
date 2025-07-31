@@ -13,7 +13,10 @@ class CustomBottomNav extends StatelessWidget {
           selectedItemColor: Colors.blue, // Active color
           unselectedItemColor: Colors.grey, // Inactive color
           currentIndex: ref.watch(screenStateProvider),
-          onTap: (idx) => ref.read(screenStateProvider.notifier).state = idx,
+          onTap: (idx) {
+            ref.read(screenStateProvider.notifier).state = idx;
+            ref.read(screenAppBarTitle.notifier).state = navScreens[idx].title;
+          },
           items: [
             BottomNavigationBarItem(
               label: '',

@@ -44,63 +44,60 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         onRefresh: _refresh,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                if (userRef.isLoading || _isRefreshing) ...[
-                  Skeletonizer(
-                    enabled: true,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 20),
-                        DetailsCard(
-                          user: UserModel.fake(),
-                        ),
-                        SizedBox(height: 20),
-                        ContactsCard(
-                          'Loading....',
-                          'Loading...',
-                          'Loading...',
-                        ),
-                        SizedBox(height: 20),
-                        ContactsCard('Loading...', 'Loading...', 'Loading...'),
-                      ],
-                    ),
+          child: Column(
+            children: [
+              if (userRef.isLoading || _isRefreshing) ...[
+                Skeletonizer(
+                  enabled: true,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 20),
+                      DetailsCard(
+                        user: UserModel.fake(),
+                      ),
+                      SizedBox(height: 20),
+                      ContactsCard(
+                        'Loading....',
+                        'Loading...',
+                        'Loading...',
+                      ),
+                      SizedBox(height: 20),
+                      ContactsCard('Loading...', 'Loading...', 'Loading...'),
+                    ],
                   ),
-                ] else ...[
-                  ...userRef.when(
-                    data: (data) {
-                      final UserModel user = data.user;
-                      final ContactsCountModel contacts = data.contactsCountModel;
-            
-                      return [
-                        SizedBox(height: 20),
-                        DetailsCard(user: user),
-                        SizedBox(height: 20),
-                        ContactsCard(
-                          contacts.userCount.toString(),
-                          'Contacts',
-                          'Total Number of Contacts',
-                        ),
-                        SizedBox(height: 20),
-                        ContactsCard(
-                          contacts.groupCount.toString(),
-                          'Groups',
-                          'Total Number of Groups',
-                        ),
-                      ];
-                    },
-                    error: (error, s) {
-                      return [Text('ERROR', style: TextStyle(color: Colors.black))];
-                    },
-                    loading: () {
-                      return [];
-                    },
-                  ),
-                ],
+                ),
+              ] else ...[
+                ...userRef.when(
+                  data: (data) {
+                    final UserModel user = data.user;
+                    final ContactsCountModel contacts = data.contactsCountModel;
+          
+                    return [
+                      SizedBox(height: 20),
+                      DetailsCard(user: user),
+                      SizedBox(height: 20),
+                      ContactsCard(
+                        contacts.userCount.toString(),
+                        'Contacts',
+                        'Total Number of Contacts',
+                      ),
+                      SizedBox(height: 20),
+                      ContactsCard(
+                        contacts.groupCount.toString(),
+                        'Groups',
+                        'Total Number of Groups',
+                      ),
+                    ];
+                  },
+                  error: (error, s) {
+                    return [Text('ERROR', style: TextStyle(color: Colors.black))];
+                  },
+                  loading: () {
+                    return [];
+                  },
+                ),
               ],
-            ),
+            ],
           ),
         ),
       );

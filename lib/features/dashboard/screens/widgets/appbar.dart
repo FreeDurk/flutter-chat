@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mchat/core/providers/token_notifier.dart';
+import 'package:mchat/features/dashboard/screens/constants/nav_screens.dart';
 
 class AppbarWidget extends ConsumerWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final title = ref.watch(screenAppBarTitle);
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
@@ -24,8 +26,8 @@ class AppbarWidget extends ConsumerWidget implements PreferredSizeWidget {
         child: Image.asset('assets/images/mchat.png'),
       ),
       centerTitle: true,
-      title: const Text(
-        'Dashboard',
+      title: Text(
+        title.toString(),
         style: TextStyle(
           fontSize: 22,
           color: Colors.black,

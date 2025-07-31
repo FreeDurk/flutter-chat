@@ -9,15 +9,21 @@ class LoginBtn extends ConsumerWidget {
   final String text;
   final TextEditingController email;
   final TextEditingController password;
-  const LoginBtn({required this.text, required this.email, required this.password, super.key});
+  const LoginBtn({
+    required this.text,
+    required this.email,
+    required this.password,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loginState = ref.watch(userStateProvider);
     return InkWell(
-      
       onTap: () async {
-        ref.read(loginActionProvider)(LoginRequest(email: email.text, password: password.text));
+        ref.read(loginActionProvider)(
+          LoginRequest(email: email.text, password: password.text),
+        );
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -29,10 +35,16 @@ class LoginBtn extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             loginState.when(
-              data: (result) => 
+              data: (result) =>
                   Text(text, style: Theme.of(context).textTheme.bodyMedium),
-              error: (error, stackTrace) =>
-                  Text("Error", style: TextStyle(color: Colors.black)),
+              error: (error, stackTrace) {
+                print('Login error: $error');
+                print('StackTrace: $stackTrace');
+                return Text(
+                  "Login failed",
+                  style: TextStyle(color: Colors.red),
+                );
+              },
               loading: () => const Padding(
                 padding: EdgeInsets.only(left: 8),
                 child: SizedBox(

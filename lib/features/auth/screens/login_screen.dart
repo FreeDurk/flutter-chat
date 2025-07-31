@@ -33,82 +33,80 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color(0xFF157A9F), // Darker blue
-                Color(0xFF3DAABF), // Lighter blue
-              ],
-            ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF157A9F), // Darker blue
+              Color(0xFF3DAABF), // Lighter blue
+            ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 30),
-                  Row(children: [Image.asset('assets/images/mchat_logo.png')]),
-                  SizedBox(height: 25),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 16,),
-                        InputField(
-                          title: 'Email',
-                          placeholder: 'Enter email',
-                          isPassword: false,
-                          onChanged: null,
-                          controller: _email,
-                        ),
-                        SizedBox(height: 25),
-                        InputField(
-                          title: 'Password',
-                          placeholder: 'Enter password',
-                          isPassword: true,
-                          onChanged: null,
-                          controller: _password,
-                        ),
-                        SizedBox(height: 25),
-                        LoginBtn(
-                          text: 'Log In',
-                          email: _email,
-                          password: _password,
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "Don’t have an account yet? Sign Up",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Forgot Password?",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 30),
+                Row(children: [Image.asset('assets/images/mchat_logo.png')]),
+                SizedBox(height: 25),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
                   ),
-                ],
-              ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Login',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 16,),
+                      InputField(
+                        title: 'Email',
+                        placeholder: 'Enter email',
+                        isPassword: false,
+                        onChanged: null,
+                        controller: _email,
+                      ),
+                      SizedBox(height: 25),
+                      InputField(
+                        title: 'Password',
+                        placeholder: 'Enter password',
+                        isPassword: true,
+                        onChanged: null,
+                        controller: _password,
+                      ),
+                      SizedBox(height: 25),
+                      LoginBtn(
+                        text: 'Log In',
+                        email: _email,
+                        password: _password,
+                      ),
+                      SizedBox(height: 25),
+                      Text(
+                        "Don’t have an account yet? Sign Up",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Forgot Password?",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),

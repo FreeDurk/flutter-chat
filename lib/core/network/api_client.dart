@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiClient {
   final Dio dio;
@@ -6,7 +7,7 @@ class ApiClient {
   ApiClient(String? accessToken)
     : dio = Dio(
         BaseOptions(
-          baseUrl: 'https://0868d6be6b34.ngrok-free.app/v1',
+          baseUrl: dotenv.get('API_URL'),
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 10),
           headers: {

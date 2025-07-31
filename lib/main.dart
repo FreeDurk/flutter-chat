@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mchat/core/providers/theme_provider.dart';
@@ -6,11 +7,13 @@ import 'package:mchat/core/providers/token_notifier.dart';
 import 'package:mchat/core/router/router.dart';
 import 'package:mchat/features/auth/screens/login_screen.dart';
 
-void main() {
+Future<void>  main() async {
+  await dotenv.load(fileName: '.env');
   runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
+  
   const MyApp({super.key});
 
   @override

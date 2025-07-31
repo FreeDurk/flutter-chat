@@ -18,7 +18,10 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     return Scaffold(
       appBar: AppbarWidget(),
       bottomNavigationBar: CustomBottomNav(),
-      body: navScreens[screenState],
+      body: Padding(
+        padding:  const EdgeInsets.symmetric(horizontal: 20),
+        child: navScreens[screenState].screen,
+      ),
     );
   }
 }
