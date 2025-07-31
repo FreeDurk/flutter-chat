@@ -55,7 +55,7 @@ class _InputFieldState extends State<InputField> {
                     onPressed: () => print('hello'),
                     icon: Icon(
                       Icons.visibility,
-                      color: Theme.of(context).primaryColor,
+                      color: btnColor,
                     ),
                   )
                 : const SizedBox(),

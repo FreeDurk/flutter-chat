@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mchat/features/auth/screens/widgets/footer.dart';
 import 'package:mchat/features/auth/screens/widgets/input_field.dart';
 import 'package:mchat/features/auth/screens/widgets/login_btn.dart';
 
@@ -94,15 +96,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         password: _password,
                       ),
                       SizedBox(height: 25),
-                      Text(
-                        "Don’t have an account yet? Sign Up",
-                        style: TextStyle(color: Colors.black),
+                      GestureDetector(
+                        onTap: () => context.pushNamed('register'),
+                        child: Text(
+                          "Don’t have an account yet? Sign Up",
+                          style: TextStyle(color: Colors.black,
+                          decoration: TextDecoration.underline,
+                          ),
+                        ),
                       ),
                       SizedBox(height: 10),
                       Text(
                         "Forgot Password?",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black,
+                        decoration: TextDecoration.underline,
+                        ),
                       ),
+                      SizedBox(height: 10),
+                      footer
                     ],
                   ),
                 ),
