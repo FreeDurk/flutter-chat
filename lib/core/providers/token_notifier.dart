@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mchat/core/services/secure_storage.dart';
+import 'package:mchat/features/dashboard/screens/constants/nav_screens.dart';
 
-
-final tokenNotifierProvider = AsyncNotifierProvider<TokenNotifier,String?>(() {
+final tokenNotifierProvider = AsyncNotifierProvider<TokenNotifier, String?>(() {
   return TokenNotifier();
 });
 
@@ -19,7 +19,7 @@ class TokenNotifier extends AsyncNotifier<String?> {
     try {
       await _storage.saveToken(token);
       state = AsyncValue.data(token);
-    } catch (e,st) {
+    } catch (e, st) {
       state = AsyncValue.error(e.toString(), st);
     }
   }
@@ -29,7 +29,8 @@ class TokenNotifier extends AsyncNotifier<String?> {
     try {
       await _storage.clearToken();
       state = AsyncValue.data(null);
-    } catch (e,st) {
+      ref.read(screenStateProvider.notifier).state = 0;
+    } catch (e, st) {
       state = AsyncValue.error(e.toString(), st);
     }
   }
