@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mchat/core/providers/theme_provider.dart';
 import 'package:mchat/features/auth/screens/widgets/search_field.dart';
 import 'package:mchat/features/contacts/data/repositories/contacts_repository.dart';
 import 'package:mchat/features/contacts/screens/widgets/contacts_tile.dart';
@@ -42,7 +43,7 @@ class _GroupContactScreenState extends ConsumerState<GroupContactScreen> {
               onChanged: null,
               controller: searchFieldController,
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -56,7 +57,7 @@ class _GroupContactScreenState extends ConsumerState<GroupContactScreen> {
                   child: ElevatedButton(
                     onPressed: () => print('Create new group...'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF00A1DE),
+                      backgroundColor: btnColor,
                       padding: EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

@@ -6,8 +6,8 @@ import 'package:mchat/features/auth/data/dto/login_request.dart';
 import 'package:mchat/features/dashboard/providers/user_provider.dart';
 import 'package:mchat/models/user_model.dart';
 
-final loginStateProvider = StateProvider<AsyncValue<dynamic>>((ref) {
-  return const AsyncValue.data(null);
+final loginStateProvider = StateProvider<AsyncValue<UserModel>>((ref) {
+  return AsyncValue.data(UserModel.fake());
 });
 
 final loginActionProvider = Provider((ref) {
@@ -19,9 +19,9 @@ final loginActionProvider = Provider((ref) {
       await ref
           .read(tokenNotifierProvider.notifier)
           .saveToken(result['access_token']);
-        ref.read(userStateProvider.notifier).state = AsyncValue.data(
-          UserModel.fromJson(result['user']),
-        );
+      ref.read(userStateProvider.notifier).state = AsyncValue.data(
+        UserModel.fromJson(result['user']),
+      );
     } catch (e, st) {
       debugPrint(e.toString());
       ref.read(userStateProvider.notifier).state = AsyncValue.error(e, st);

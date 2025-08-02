@@ -22,7 +22,7 @@ class AppbarWidget extends ConsumerWidget implements PreferredSizeWidget {
         ),
       ),
       leading: Padding(
-        padding: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(left: 20),
         child: Image.asset('assets/images/mchat.png'),
       ),
       centerTitle: true,
@@ -36,7 +36,7 @@ class AppbarWidget extends ConsumerWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 10.0),
+          padding: const EdgeInsets.only(right: 20.0),
           child: Container(
             decoration: BoxDecoration(
               color: Color(0xFFE4E4E4),
